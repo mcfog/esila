@@ -5,13 +5,17 @@ var _ = require('lodash');
 
 module.exports = {
     getMenuOfRestaurant: function(r) {
+        var url = 'http://r.ele.me/' + r;
         return prequest({
-            url: 'http://r.ele.me/' + r
+            url: url
         })
+            .bind({url: url})
             .spread(function(res) {
                 return cheerio.load(res.body);
             })
             .then(function($) {
+                this.name = $('.rst-name').text();
+
                 return $('script').map(function() {
                     var $src = $(this);
                     if($src.attr('src')) return;
@@ -29,12 +33,14 @@ module.exports = {
                 }).get();
             })
             .then(function(cats) {
-                return _(cats)
+                this.items = _(cats)
                     .map(function(cat) {
                         return [].concat(cat.foods.with_image, cat.foods.without_image);
                     })
                     .flatten()
                     .value();
+
+                return this;
             })
     }
 };
