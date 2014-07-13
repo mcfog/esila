@@ -1,0 +1,25 @@
+{
+  "name": "esila",
+  "version": "0.0.0",
+  "description": "ele.me scratcher",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mcfog/esila.git"
+  },
+  "author": "mcfog",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcfog/esila/issues"
+  },
+  "homepage": "https://github.com/mcfog/esila",
+  "dependencies": {
+    "bluebird": "^2.2.1",
+    "cheerio": "^0.17.0",
+    "lodash": "^2.4.1",
+    "request": "^2.37.0"
+  }
+}
