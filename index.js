@@ -7,7 +7,10 @@ module.exports = {
     getMenuOfRestaurant: function(r) {
         var url = 'http://r.ele.me/' + r;
         return prequest({
-            url: url
+            url: url,
+            headers: {
+                'User-Agent': 'request'
+            }
         })
             .bind({url: url})
             .spread(function(res) {
